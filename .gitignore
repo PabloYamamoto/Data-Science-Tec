@@ -1,2 +1,5 @@
 # Ignore Data Base
 A01022382_BasedeDatos.xlsx
+
+#Ignore .vscode
+.vscode
