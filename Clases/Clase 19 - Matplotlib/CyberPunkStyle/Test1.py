@@ -21,7 +21,7 @@ def Graph(data):
     
     fig, ax = plt.subplots()
     
-    df.plot(marker='o', color=colors, ax=ax)
+    df.plot(marker='o', color='#08F7FE', ax=ax)  #Aqui podemos cambiar el color de las línea y marcadores
 
     # Esta parte del código nos da las sombras alrededor de las líneas graficadas, es un efecto sombra. 
     n_shades = 5
@@ -33,14 +33,19 @@ def Graph(data):
                 alpha=alpha_value,
                 legend=False,
                 ax=ax,
-                color=colors)
+                color='#08F7FE')
+     
 
-
+    
     
     # Graficar los datos
     
-    ax.grid(color='#F5D300', alpha = 0.5)  # Cambiar el grid
-    font = {'fontname' : 'Arial'} # Cambiar el tipo de fuente
+    ax.grid(color='#F5D300', alpha = 0.3)  # Cambiar el grid
+    font = {'fontname' : 'AppleMyungjo'} # Cambiar el tipo de fuente
+    for tick in ax.get_xticklabels():
+        tick.set_fontname('AppleMyungjo') # Cambiar el tipo de fuente del eje X
+    for tick in ax.get_yticklabels():
+        tick.set_fontname('AppleMyungjo') # Cambiar el tipo de fuente del eje Y
     plt.xlabel("Number of student", **font)
     plt.ylabel("Score", **font)
     plt.title("SAT", size = 30, **font)
