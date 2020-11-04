@@ -36,13 +36,6 @@ def Graph(data):
                 color=colors)
 
 
-    # Colorear el área de los datos
-    for column, color in zip(df, colors):
-        ax.fill_between(x=df.index,
-                        y1=df[column].values,
-                        y2=[0] * len(df),
-                        color=color,
-                        alpha=0.1)
     
     # Graficar los datos
     
