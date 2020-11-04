@@ -35,9 +35,6 @@ def Graph(data):
                 ax=ax,
                 color='#08F7FE')
      
-
-    
-    
     # Graficar los datos
     
     ax.grid(color='#F5D300', alpha = 0.3)  # Cambiar el grid
