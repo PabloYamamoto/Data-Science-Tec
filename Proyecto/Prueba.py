@@ -12,8 +12,8 @@ def ReadCSV():
 
 def Regression(data, y, x1):
     x = sm.add_constant(x1)
-    #results = sm.OLS(y,x).fit()
-    #print(results.summary())  
+    results = sm.OLS(y,x).fit()
+    print(results.summary())  
 
 def Graph(data, y, x1):
     for param in ['figure.facecolor', 'axes.facecolor', 'savefig.facecolor']:
@@ -28,7 +28,7 @@ def Graph(data, y, x1):
     '#F5D300',  # yellow
     '#00ff41',  # matrix green
     ]
-    
+
     df1 = pd.DataFrame({'Carbs': x1['Carbohidratos (g)']})
     df2 = pd.DataFrame({'Fat': x1['Lípidos (g)']})
     df3 = pd.DataFrame({'Protein': x1['Proteína (g)']})
@@ -97,12 +97,53 @@ def Graph(data, y, x1):
     plt.show()
 
 
+def GraphCals(y):
+    df = y
+    for param in ['figure.facecolor', 'axes.facecolor', 'savefig.facecolor']:
+        plt.rcParams[param] = '#212946'  # Color del fondo, toda la figura
+    for param in ['text.color', 'axes.labelcolor', 'xtick.color', 'ytick.color']:
+        plt.rcParams[param] = 'white'  # Color de las etiquetas y números de los ejes
+    fig, ax = plt.subplots()
+    colors = [
+    '#08F7FE',  # teal/cyan
+    '#FE53BB',  # pink
+    '#F5D300',  # yellow
+    '#00ff41',  # matrix green
+    ]
+
+    df.plot(marker='o', color='#08F7FE', ax=ax)  #Aqui podemos cambiar el color de las línea y marcadores
+    n_shades = 5
+    diff_linewidth = 1.05
+    alpha_value = 0.3 / n_shades
+    for n in range(1, n_shades+1):
+        df.plot(marker='o',
+                linewidth=2+(diff_linewidth*n),
+                alpha=alpha_value,
+                legend=False,
+                ax=ax,
+                color='#08F7FE')
+    
+    
+    
+    ax.grid(color='#F5D300', alpha = 0.3)  # Cambiar el grid
+    font = {'fontname' : 'AppleMyungjo'} # Cambiar el tipo de fuente
+    for tick in ax.get_xticklabels():
+        tick.set_fontname('AppleMyungjo') # Cambiar el tipo de fuente del eje X
+    for tick in ax.get_yticklabels():
+        tick.set_fontname('AppleMyungjo') # Cambiar el tipo de fuente del eje Y
+    
+    plt.ylabel("Calories", size = 20, fontstyle ='oblique', **font)
+    plt.xlabel("Day", size = 20, fontstyle='oblique', **font)
+    plt.show()
+
 def main():
     data = ReadCSV()
     y = data['Calorias (kcal)']
     x1 = data[['Carbohidratos (g)',  'Lípidos (g)',  'Proteína (g)']]
     Regression(data, y, x1)
     Graph(data, y, x1)
+    GraphCals(y)
+
     
 
 main()
