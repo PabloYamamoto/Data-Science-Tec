@@ -1,6 +1,8 @@
 # Ignore Data Base
 A01022382_BasedeDatos.xlsx
 ~$A01022382_BasedeDatos.xlsx
+A01022382_BasedeDatos.csv
+
 
 #Ignore .vscode
 .vscode
