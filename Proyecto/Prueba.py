@@ -22,6 +22,12 @@ def Graph(data, y, x1):
         plt.rcParams[param] = 'white'  # Color de las etiquetas y números de los ejes
 
     fig, ax = plt.subplots()
+    colors = [
+    '#08F7FE',  # teal/cyan
+    '#FE53BB',  # pink
+    '#F5D300',  # yellow
+    '#00ff41',  # matrix green
+    ]
     
     df1 = pd.DataFrame({'Carbs': x1['Carbohidratos (g)']})
     df2 = pd.DataFrame({'Fat': x1['Lípidos (g)']})
@@ -54,7 +60,26 @@ def Graph(data, y, x1):
                 ax=ax,
                 color='#00ff41')
      
-    # Graficar los datos
+    for column, color in zip(df1, colors):
+        ax.fill_between(x=df1.index,
+                        y1=df1[column].values,
+                        y2=[0] * len(df1),
+                        color='#08F7FE',
+                        alpha=0.1)
+    
+    for column, color in zip(df2, colors):
+        ax.fill_between(x=df2.index,
+                        y1=df2[column].values,
+                        y2=[0] * len(df2),
+                        color='#FE53BB',
+                        alpha=0.1)
+    
+    for column, color in zip(df3, colors):
+        ax.fill_between(x=df3.index,
+                        y1=df3[column].values,
+                        y2=[0] * len(df3),
+                        color='#00ff41',
+                        alpha=0.1)
     
     ax.grid(color='#F5D300', alpha = 0.3)  # Cambiar el grid
     font = {'fontname' : 'AppleMyungjo'} # Cambiar el tipo de fuente
