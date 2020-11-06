@@ -6,3 +6,6 @@ A01022382_BasedeDatos.csv
 
 #Ignore .vscode
 .vscode
+
+#.DS_Store
+.DS_Store
